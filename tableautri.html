@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/81a41055e4.js" crossorigin="anonymous"></script>
+    <title>javascript</title>
+    <link rel="stylesheet" href="camini.css">
+</head>
+<header>
+    <h1>JS</h1>
+    <H5>.Learn</H5>
+    <div class="main-menu">
+        <ul class="menu-list">
+            <li><a href="./home.html">Home</a></li>
+            <li><a href="./variable.html">Les variables</a></li>
+            <li><a href="./condition.html">Les conditions</a></li>
+            <li><a href="./fonction.html">Les fonctions</a></li>
+            <li><a>Les boucles</a>
+                <ul>
+                    <li><a href="./bouclefor.html">La boucle for</a></li>
+                    <li><a href="./bouclewhile.html">La boucle while</a></li>
+                    <li><a href="./boucleimbriqué.html">Les boucles imbriquées</a></li>
+                </ul>
+            </li>
+            <li><a href="#" id="chaine">Les chaines</a>
+                <ul>
+                    <li><a href="./chainecherche.html">recherche et supression dans un chaine</a></li>
+                    <li><a href="./chainecompter.html">compter le nombre de voyelles</a></li>
+                </ul>
+            </li>
+            <li><a href="#" id="tableau">Les tableaux</a>
+                <ul>
+                    <li><a href="./tableautri.html">tri d'un tableau</a></li>
+                    <li><a href="./tableaurecherche.html">recherche dans un tableau</a></li>
+                </ul>
+            </li>
+            <li><a href="#" id="contact">contact</a></li>
+        </ul>
+    </div>
+</header>
+<div class="icons">
+    <a href="./home.html"><i class="fa-solid fa-house"></i></a>
+    <a href="./variable.html"><i class="fa-solid fa-repeat"></i></a>
+    <a href="./condition.html"><i class="fa-solid fa-calendar-days"></i></a>
+    <a href="./fonction.html"><i class="fa-solid fa-calculator"></i></a>
+    <a href="./bouclefor.html"><i class="fa-solid fa-brain"></i></a>
+    <a href="./bouclewhile.html"><i class="fa-solid fa-box-open"></i></a>
+    <a href="./boucleimbriqué.html"><i class="fa-solid fa-print"></i></a>
+    <a href="./chainecherche.html"><i class="fa-sharp fa-solid fa-dumpster-fire"></i></a>
+    <a href="./chainecompter.html"><i class="fa-sharp fa-solid fa-list-ol"></i></a>
+    <a href="./tableautri.html"><i class="fa-solid fa-table"></i></a>
+    <a href="./tableaurecherche.html"><i class="fa-solid fa-diagram-predecessor"></i></a>
+    <a href="./contact.html"><i class="fa-solid fa-address-card"></i></a>
+
+</div>
+
+<body>
+    <h2>.Trier d'un tableau</h2>
+    <div class="line2"></div>
+    <h4>Enoncé</h4>
+    <div class="variable">
+        <p>Ecrire un programme Javascript qui permet de trier un tableau d’entier (Utiliser n’importe quel algorithme de
+            tri mais surtout pas la fonction Sort de l’objet Array).
+            L’utilisateur commence tout d’abord par saisir la taille du tableau, ensuite il remplit le tableau pour
+            cliquer à la fin sur un bouton trier : celui-ci affichera le tableau en ordre croissant ou décroissant.
+        </p>
+    </div>
+    <h4>Démo</h4>
+    <div class="variable">
+        <div class="tri">
+            <div>
+                <p>Donner la taille du tableau :</p>
+                <input type="number" id="entrer"><br>
+                <button id="mar" type="button" class="buttonpermuter" onclick="valider()">Valider</button>
+            </div>
+            <div >
+                <p>Veuiller remplir le tableau :</p>
+                <output id="outp"></output><br>
+                <button id="marr" class="buttonpermuter" type="button" onclick="trier()">Trier</button>
+            </div>
+            <div>
+                <output id="existe"></output>
+            </div>
+        </div>
+    </div>
+    <h4>Code Source</h4>
+    <textarea>
+        <script>
+            function valider() {
+                var entrer = parseInt(document.getElementById('entrer').value)
+                for (x = 1; x <= entrer; x++) {
+                    var inp = document.createElement('input')
+                    inp.setAttribute('id', 'input' + x)
+                    inp.setAttribute('type', 'Number')
+                    document.getElementById('outp').appendChild(inp)
+                }
+            }
+            function trier() {
+                var entrer = parseInt(document.getElementById('entrer').value)
+                for (x = 0; x < entrer; x++) {
+                    var inpt = document.createElement('input')
+                    inpt.setAttribute('id', 'inpt' + x)
+                    document.getElementById('existe').appendChild(inpt)
+                }
+                const array = []
+                const arrayy = []
+                for (let i = 1; i <= entrer; i++) {
+                    array.push(parseInt(document.getElementById('input' + i).value))
+                }
+                for (let i = 0; i < entrer; i++) {
+                    let min = Math.min(...array)
+                    const index = array.indexOf(min);
+                    arrayy.push(min)
+                    document.getElementById('inpt' + i).value = min
+                    array.splice(index, 1)
+                }
+            }
+        </script>
+    </textarea>
+</body>
+<script>
+    function valider() {
+        var entrer = parseInt(document.getElementById('entrer').value)
+        for (x = 1; x <= entrer; x++) {
+            var inp = document.createElement('input')
+            inp.setAttribute('id', 'input' + x)
+            inp.setAttribute('type', 'Number')
+            document.getElementById('outp').appendChild(inp)
+        }
+    }
+    function trier() {
+        var entrer = parseInt(document.getElementById('entrer').value)
+        for (x = 0; x < entrer; x++) {
+            var inpt = document.createElement('input')
+            inpt.setAttribute('id', 'inpt' + x)
+            document.getElementById('existe').appendChild(inpt)
+        }
+        const array = []
+        const arrayy = []
+        for (let i = 1; i <= entrer; i++) {
+            array.push(parseInt(document.getElementById('input' + i).value))
+        }
+        for (let i = 0; i < entrer; i++) {
+            let min = Math.min(...array)
+            const index = array.indexOf(min);
+            arrayy.push(min)
+            document.getElementById('inpt' + i).value = min
+            array.splice(index, 1)
+        }
+    }
+</script>
+<footer>
+    <div class="icon">
+        <a href="#" class="icon1"><i class="fa-brands fa-facebook">facebook</i></a>
+        <a href="#" class="icon2"><i class="fa-brands fa-instagram">instagram</i></a>
+        <a href="#" class="icon3"><i class="fa-brands fa-github">github</i></a>
+    </div>
+    <p class="copy">@Copy-right with github tools</p>
+</footer>
